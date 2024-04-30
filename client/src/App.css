@@ -1,0 +1,78 @@
+.App {
+  text-align: center;
+}
+
+.eventList {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Stile per il titolo dell'evento */
+.eventTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #9a40d7;
+  margin-bottom: 10px;
+}
+
+/* Stile per la descrizione dell'evento */
+.eventDesc {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Stile per la data dell'evento */
+.eventData {
+  color: #999;
+}
+
+/* Hover effect */
+.event:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Css per la creazione degli eventi*/
+
+.createEventPage {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.createEventPage label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.createEventPage input,
+.createEventPage textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.createEventPage button {
+  background-color: #007bff;
+  color: #fff;
+  border: 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.createEventPage button:hover {
+  background-color: #0056b3;
+}
