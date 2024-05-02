@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+span {
+  color: red;
+}
 .eventList {
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -75,4 +78,69 @@
 
 .createEventPage button:hover {
   background-color: #0056b3;
+}
+
+/* Css per la creazione degli eventi*/
+
+.addLocationPage {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.addLocationPage label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.addLocationPage input,
+.addLocationPage textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.addLocationPage button {
+  background-color: #007bff;
+  color: #fff;
+  border: 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.addLocationPage button:hover {
+  background-color: #0056b3;
+}
+
+/*Css navbar*/
+.navbar {
+  background-color: #333; /* Colore di sfondo */
+  padding: 10px 20px; /* Spaziatura interna */
+}
+
+.navbar a {
+  color: white; /* Colore del testo */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  margin-right: 20px; /* Margine a destra tra i link */
+  padding: 8px 12px; /* Spaziatura interna dei link */
+  border: 1px solid transparent; /* Bordo trasparente */
+  border-radius: 4px; /* Bordi arrotondati */
+  background-color: #333133;
+}
+
+.navbar a:hover {
+  background-color: #555; /* Cambia il colore di sfondo al passaggio del mouse */
+}
+
+.navbar a:first-child {
+  margin-right: auto; /* Sposta il primo link a sinistra */
 }

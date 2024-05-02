@@ -18,5 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     { sequelize, tableName: "eventi" }
   );
+  Eventi.associate = (models) => {
+    Eventi.hasMany(models.EventiLocations, {
+      onDelete: "cascade",
+    });
+  };
   return Eventi;
 };
