@@ -8,6 +8,11 @@ router.get("/", async (req, res) => {
   res.json(listaLocations);
 });
 
+router.get("/byId/:id", async (req, res) => {
+  const id = req.params.id;
+  const location = await Locations.findByPk(id);
+  res.json(location);
+});
 //Inserire dati nel db sfruttando sequelize
 router.post("/", async (req, res) => {
   try {

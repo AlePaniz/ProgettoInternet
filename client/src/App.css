@@ -5,40 +5,6 @@
 span {
   color: red;
 }
-.eventList {
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Stile per il titolo dell'evento */
-.eventTitle {
-  font-size: 20px;
-  font-weight: bold;
-  color: #9a40d7;
-  margin-bottom: 10px;
-}
-
-/* Stile per la descrizione dell'evento */
-.eventDesc {
-  color: #666;
-  margin-bottom: 10px;
-}
-
-/* Stile per la data dell'evento */
-.eventData {
-  color: #999;
-}
-
-/* Hover effect */
-.event:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 /* Css per la creazione degli eventi*/
 
 .createEventPage {
@@ -143,4 +109,102 @@ span {
 
 .navbar a:first-child {
   margin-right: auto; /* Sposta il primo link a sinistra */
+}
+
+/* Css per la visione delle location*/
+
+.locationListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locationListItem {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.locationListItem .nome {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.locationListItem .indirizzo {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.locationListItem .descrizione {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.locationListItem .nPosti {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Stile pagina location singola*/
+
+/* Stili per la pagina di visualizzazione della località */
+.locationPage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Stili per la colonna sinistra */
+.leftSide {
+  flex: 1;
+  padding-right: 20px;
+}
+
+/* Stili per la colonna destra */
+.rightSide {
+  flex: 1;
+  padding-left: 20px;
+}
+
+/* Stili per il nome della località */
+.nome {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Stili per la descrizione della località */
+.descrizione {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Stili per l'indirizzo della località */
+.indirizzo {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Stili per il numero di posti disponibili della località */
+.nPosti {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Stili per la sezione recensioni */
+.recensioni {
+  font-size: 20px;
+  color: #333;
 }

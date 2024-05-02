@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateEvent from "./pages/CreateEvent";
 import AddLocation from "./pages/AddLocation";
+import Location from "./pages/Location";
 //Vogliamo la definizione di tutte le route
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/createevent" element={<CreateEvent />} />
           <Route path="/addlocation" element={<AddLocation />} />
+          <Route path="/location/:id" element={<Location />} />
         </Routes>
       </Router>
     </div>
