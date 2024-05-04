@@ -8,11 +8,13 @@ router.get("/", async (req, res) => {
   res.json(listaLocations);
 });
 
+//Prende  la location che ci interessa  tramite la chiave primaria(id)
 router.get("/byId/:id", async (req, res) => {
   const id = req.params.id;
   const location = await Locations.findByPk(id);
   res.json(location);
 });
+
 //Inserire dati nel db sfruttando sequelize
 router.post("/", async (req, res) => {
   try {

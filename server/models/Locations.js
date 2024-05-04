@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     Locations.hasMany(models.EventiLocations, {
       onDelete: "cascade",
     });
+
+    Locations.hasMany(models.Recensioni, {
+      onDelete: "cascade",
+    });
   };
 
   return Locations;
