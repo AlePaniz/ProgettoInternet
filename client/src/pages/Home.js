@@ -19,6 +19,7 @@ function Home() {
 
   return (
     <div>
+      <h1>CIAO</h1>
       {locationList.map((value, key) => {
         //key=index dell'elemento dell'array mentre value= il valore dell'elemento
         return (
