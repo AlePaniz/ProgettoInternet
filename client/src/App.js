@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Router>
         <div className="navbar">
-          <Link to="/">HOME</Link>
+          <Link to="/">Home</Link>
           <Link to="/createevent">Crea Evento</Link>
-          <Link to="/addlocation">aggiungi una Location</Link>
+          <Link to="/addlocation">Aggiungi Location</Link>
         </div>
         <Routes>
           <Route path="/" element={<Home />} />

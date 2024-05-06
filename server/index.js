@@ -14,6 +14,8 @@ const routerLocations = require("./routes/Locations");
 app.use("/locations", routerLocations);
 const routerRecensioni = require("./routes/Recensioni");
 app.use("/recensioni", routerRecensioni);
+const routerUtenti = require("./routes/Utenti");
+app.use("/auth", routerUtenti);
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {

@@ -20,6 +20,7 @@ function AddLocation() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/locations", data).then((response) => {
+      window.alert("Location aggiunta!!");
       console.log("Ha funzionatos");
     });
   };

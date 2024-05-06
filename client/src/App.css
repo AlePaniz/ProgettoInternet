@@ -96,7 +96,7 @@ span {
 .navbar a {
   color: white; /* Colore del testo */
   text-decoration: none; /* Rimuove la sottolineatura */
-  margin-right: 20px; /* Margine a destra tra i link */
+
   padding: 8px 12px; /* Spaziatura interna dei link */
   border: 1px solid transparent; /* Bordo trasparente */
   border-radius: 4px; /* Bordi arrotondati */
@@ -157,7 +157,7 @@ span {
 /* Stili per la pagina di visualizzazione della località */
 .locationPage {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   padding: 20px;
 }
@@ -165,18 +165,17 @@ span {
 /* Stili per la colonna sinistra */
 .leftSide {
   flex: 1;
-  padding-right: 20px;
 }
 
 /* Stili per la colonna destra */
 .rightSide {
   flex: 1;
-  padding-left: 20px;
+  margin-left: 20px;
 }
 
 /* Stili per il nome della località */
 .nome {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
@@ -204,7 +203,29 @@ span {
 }
 
 /* Stili per la sezione recensioni */
-.recensioni {
-  font-size: 20px;
-  color: #333;
+.addTestoRecensione input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addVoto {
+  margin-bottom: 20px;
+}
+
+.addVoto input[type="radio"] {
+  margin-right: 5px;
+}
+
+.listaRecensioni .recensione {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.listaRecensioni .recensione:last-child {
+  margin-bottom: 0;
 }
