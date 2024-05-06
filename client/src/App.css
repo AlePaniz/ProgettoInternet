@@ -46,7 +46,7 @@ span {
   background-color: #0056b3;
 }
 
-/* Css per la creazione degli eventi*/
+/* Css per la creazione delle location*/
 
 .addLocationPage {
   max-width: 400px;
@@ -228,4 +228,89 @@ span {
 
 .listaRecensioni .recensione:last-child {
   margin-bottom: 0;
+}
+
+/* Stili per la Registration page */
+.registrationPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.formContainer {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.formContainer input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formContainer button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formContainer button:hover {
+  background-color: #0056b3;
+}
+
+.radio-item {
+  margin-bottom: 8px;
+}
+
+.radio-item label {
+  margin-right: 8px;
+}
+
+/* Stili per la Login page */
+
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginPage input {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.loginPage button {
+  width: 300px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginPage button:hover {
+  background-color: #0056b3;
 }
