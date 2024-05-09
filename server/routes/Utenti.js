@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { Utenti } = require("../models");
 const bcrypt = require("bcrypt");
+const { validateToken } = require("../middlewares/AuthMiddleware");
 //Una libreria per la crittorafia delle password che aiuta nella gestione sicura del sito
+
+const { sign } = require("jsonwebtoken");
 
 //Inserire dati nel db sfruttando sequelize
 router.post("/", async (req, res) => {
@@ -43,17 +46,35 @@ router.post("/login", async (req, res) => {
 
   const utente = await Utenti.findOne({ where: { username: username } });
   if (!utente) {
-    res.json({ errror: "Utente inesistente" });
+    res.json({ error: "Utente inesistente" });
   }
   //Se username non esiste ritorno un errore e mi fermo
   else {
+    //Con compare faccio una comparazione della password che l'utente ha inserito con quella salvata nel database(quella appena inserita viene
     bcrypt.compare(password, utente.password).then((eq) => {
+      //viene hashata e controllata automaticamente
       if (!eq) {
-        res.json({ errror: "Utente e/o password sbagliata" });
+        res.json({ error: "Utente e/o password sbagliata" });
       } else {
-        res.json("YOU LOGGED IN");
+        //Per tenere l'utente in sessione una volta loggato creo un token(una stringa utile per l'identificazione)
+        const accessToken = sign(
+          { username: utente.username, id: utente.id },
+          "plqwenfNCSLmemdaadASDnenf"
+        ); //passiamo i dati dell'utente e una stringa di lettere generata casualmente
+        //che serve per garantire sicurezza una volta effettuato il login
+        res.json({
+          token: accessToken,
+          username: utente.username,
+          id: utente.id,
+        });
       }
-    }); //Con compare faccio una comparazione della password che l'utente ha inserito con quella salvata nel database(quella appena inserita viene
-  } //viene hashata e controllata automaticamente
+    });
+  }
 });
+
+router.get("/validation", validateToken, (req, res) => {
+  //Faccio runnare questo e mi ritornerà se è valido oppure no
+  res.json(req.utente);
+});
+
 module.exports = router;

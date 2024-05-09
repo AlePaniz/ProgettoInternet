@@ -5,6 +5,9 @@
 span {
   color: red;
 }
+#usernameHome {
+  color: rgb(6, 103, 250);
+}
 /* Css per la creazione degli eventi*/
 
 .createEventPage {

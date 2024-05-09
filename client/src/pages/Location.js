@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../helpers/AuthContext";
 
 function Location() {
   let { id } = useParams();
@@ -8,6 +9,7 @@ function Location() {
   const [voto, setVoto] = useState();
   const [recensioni, setRecensioni] = useState([]);
   const [nuovaRecensione, setNuovaRecensione] = useState("");
+  const { authState } = useContext(AuthContext);
 
   useEffect(() => {
     //richiesta per la location in base all'id
@@ -21,18 +23,48 @@ function Location() {
     });
   }, []);
 
+  const cancellaRecensione = (id) => {
+    axios
+      .delete(`http://localhost:3001/recensioni/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then(() => {
+        setRecensioni(
+          recensioni.filter((rec) => {
+            //faccio un check se voglio tenere una recensione nella lista oppure no, se è quello appena cancellato no
+            return rec.id !== id;
+          })
+        );
+      });
+  };
   const aggiungiRecensione = () => {
     axios
-      .post("http://localhost:3001/recensioni", {
-        recBody: nuovaRecensione,
-        voto: voto,
-        LocationId: id,
-      })
+      .post(
+        "http://localhost:3001/recensioni",
+        {
+          recBody: nuovaRecensione,
+          voto: voto,
+          LocationId: id,
+        },
+        {
+          //Passo l'accesstoken nell'header
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then((response) => {
-        const recDaAggiungere = { recBody: nuovaRecensione, voto: voto };
-        setRecensioni([...recensioni, recDaAggiungere]); //Stiamo prendendo l'array e aggiungiamo un elemento in fondo lasciando l'array prima di quello come era
-        //Utile per aggiungere in tempo reale le recensioni una volta scritte
-        setNuovaRecensione("");
+        //Se ci sono errori dati dalla non validazione tramite accessToken li mostro
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          const recDaAggiungere = {
+            recBody: nuovaRecensione,
+            voto: voto,
+            username: response.data.username,
+          };
+          setRecensioni([...recensioni, recDaAggiungere]); //Stiamo prendendo l'array e aggiungiamo un elemento in fondo lasciando l'array prima di quello come era
+          //Utile per aggiungere in tempo reale le recensioni una volta scritte
+          setNuovaRecensione("");
+        }
       });
   };
   return (
@@ -110,6 +142,13 @@ function Location() {
               <div key={key} className="recensione">
                 {recensione.recBody}
                 <br></br>voto:{recensione.voto}
+                <br></br>
+                <label>utente:{recensione.username}</label>
+                {authState.username === recensione.username && ( //Mostra il bottone per eliminare il commento se è loggato los tesso che l'ha scrittonpm
+                  <button onClick={() => cancellaRecensione(recensione.id)}>
+                    X
+                  </button>
+                )}
               </div>
             );
           })}
