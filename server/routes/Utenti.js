@@ -58,13 +58,18 @@ router.post("/login", async (req, res) => {
       } else {
         //Per tenere l'utente in sessione una volta loggato creo un token(una stringa utile per l'identificazione)
         const accessToken = sign(
-          { username: utente.username, id: utente.id },
+          {
+            username: utente.username,
+            tipoUtente: utente.tipoUtente,
+            id: utente.id,
+          },
           "plqwenfNCSLmemdaadASDnenf"
         ); //passiamo i dati dell'utente e una stringa di lettere generata casualmente
         //che serve per garantire sicurezza una volta effettuato il login
         res.json({
           token: accessToken,
           username: utente.username,
+          tipoUtente: utente.tipoUtente,
           id: utente.id,
         });
       }

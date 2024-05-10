@@ -6,6 +6,7 @@ import AddLocation from "./pages/AddLocation";
 import Location from "./pages/Location";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
+import PageNotFound from "./pages/PageNotFound";
 import axios from "axios";
 
 //Vogliamo la definizione di tutte le route
@@ -16,6 +17,7 @@ import { useEffect } from "react";
 function App() {
   const [authState, setAuthState] = useState({
     username: "",
+    tipoUtente: "cliente",
     id: 0,
     status: false,
   }); //Per tenere traccia se è stato effettuato il login oppure no
@@ -32,6 +34,7 @@ function App() {
         } else {
           setAuthState({
             username: response.data.username,
+            tipoUtente: response.data.tipoUtente,
             id: response.data.id,
             status: true,
           });
@@ -44,6 +47,7 @@ function App() {
     localStorage.removeItem("accessToken");
     setAuthState({
       username: "",
+      tipoUtente: "cliente",
       id: 0,
       status: false,
     });
@@ -64,8 +68,9 @@ function App() {
               </>
             ) : (
               <>
-                <Link to="/createevent">Crea Evento</Link>
-                <Link to="/addlocation">Aggiungi Location</Link>
+                {authState.tipoUtente === "gestore" && (
+                  <Link to="/addlocation">Aggiungi Location</Link>
+                )}
                 <label id="usernameHome">{authState.username}</label>
                 <button onClick={logout}>Logout</button>
               </>
@@ -78,6 +83,7 @@ function App() {
             <Route path="/location/:id" element={<Location />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </Router>
       </AuthContext.Provider>

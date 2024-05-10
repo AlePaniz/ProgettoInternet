@@ -8,7 +8,7 @@ function AddLocation() {
     nome: "",
     descrizione: "",
     indirizzo: "",
-    nPosti: "",
+    nPosti: 0,
   };
 
   const validationSchema = Yup.object().shape({
@@ -19,10 +19,15 @@ function AddLocation() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/locations", data).then((response) => {
-      window.alert("Location aggiunta!!");
-      console.log("Ha funzionatos");
-    });
+    console.log(localStorage.getItem("accessToken"));
+    axios
+      .post("http://localhost:3001/locations", data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        window.alert("Location aggiunta!!");
+        console.log("Ha funzionatos");
+      });
   };
 
   return (

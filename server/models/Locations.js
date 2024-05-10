@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Locations.associate = (models) => {
-    Locations.hasMany(models.EventiLocations, {
+    Locations.hasMany(models.Eventi, {
       onDelete: "cascade",
     });
 

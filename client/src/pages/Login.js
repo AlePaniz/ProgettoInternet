@@ -16,9 +16,11 @@ function Login() {
         alert(response.data.error);
       } else {
         localStorage.setItem("accessToken", response.data.token);
+
         //tramite auhtState posso controllare il login in ogni parte dell'app
         setAuthState({
           username: response.data.username,
+          tipoUtente: response.data.tipoUtente,
           id: response.data.id,
           status: true,
         });

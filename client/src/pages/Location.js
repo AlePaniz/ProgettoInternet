@@ -2,6 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
+//Import utili per la creazione evento:
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import "react-datepicker/dist/react-datepicker.css";
+import ReactDatePicker from "react-datepicker";
+import * as Yup from "yup";
+import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 function Location() {
   let { id } = useParams();
@@ -11,6 +18,30 @@ function Location() {
   const [nuovaRecensione, setNuovaRecensione] = useState("");
   const { authState } = useContext(AuthContext);
 
+  let history = useNavigate();
+  //Inizio gestione creazione eventi:
+  //Valore iniziale degli elementi
+  const initialValue = {
+    nome: "",
+    descrizione: "",
+    dataEvento: format(new Date("2000-01-01"), "yyyy-MM-dd"),
+  };
+
+  //Per secificare imput validi
+  const validationSchema = Yup.object().shape({
+    nome: Yup.string().required(),
+    descrizione: Yup.string().required(),
+    dataEvento: Yup.date().required(),
+  });
+  //Una volta inviati i dati
+  const onSubmit = (values) => {
+    axios.post("http://localhost:3001/eventi", values).then((response) => {
+      alert("Evento Creato!");
+    });
+  };
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  //Fine gestione creazione eventi
   useEffect(() => {
     //richiesta per la location in base all'id
     axios.get(`http://localhost:3001/locations/byId/${id}`).then((response) => {
@@ -67,23 +98,95 @@ function Location() {
         }
       });
   };
+
+  const cancellaLocation = (id) => {
+    axios
+      .delete(`http://localhost:3001/locations/${id}`, {
+        //Passo l'accesstoken nell'header
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then(() => {
+        alert("Cancellato con successo!");
+        history("/");
+      });
+  };
   return (
     <div className="locationPage">
       <div className="leftSide">
-        <div className="nome">{locationObject.nome}</div>
-        <div className="descrizione">
-          descrizione location:
-          <br />
-          {locationObject.descrizione}
+        <div className="infoLocation">
+          <div className="nome">{locationObject.nome}</div>
+          <div className="descrizione">
+            descrizione location:
+            <br />
+            {locationObject.descrizione}
+          </div>
+          <div className="indirizzo">
+            Indirizzo:
+            <br />
+            {locationObject.indirizzo}
+          </div>
+          <div className="nPosti">
+            Numero posti disponibili:{locationObject.nPosti}
+          </div>{" "}
         </div>
-        <div className="indirizzo">
-          Indirizzo:
-          <br />
-          {locationObject.indirizzo}
+        <div className="cancellaLocation">
+          {authState.id === locationObject.UtentiId && (
+            <button
+              onClick={() => {
+                cancellaLocation(locationObject.id);
+              }}
+            >
+              Cancella Location
+            </button>
+          )}
         </div>
-        <div className="nPosti">
-          Numero posti disponibili:{locationObject.nPosti}
-        </div>{" "}
+        <div className="creazioneEvento">
+          <div className="header">
+            {" "}
+            Crea il tuo evento per questa location:{" "}
+          </div>
+          <div className="formCreazioneEvento">
+            <Formik
+              initialValues={initialValue}
+              onSubmit={onSubmit}
+              validationSchema={validationSchema}
+            >
+              {({ setFieldValue }) => (
+                <Form>
+                  <label>Nome evento:</label>
+                  <ErrorMessage name="nome" component="span" />
+                  <Field
+                    autocomplete="off"
+                    id="inputCreateEvent"
+                    name="nome"
+                    placeholder="Nome evento..."
+                  />
+                  <label>descrizione:</label>
+                  <ErrorMessage name="descrizione" component="span" />
+                  <Field
+                    autocomplete="off"
+                    id="inputCreateEvent"
+                    name="descrizione"
+                    placeholder="Descrizione evento..."
+                  />
+                  <label>data :</label>
+                  <ErrorMessage name="dataEvento" component="span" />
+                  <ReactDatePicker
+                    id="inputCreateEvent"
+                    name="dataEvento"
+                    selected={selectedDate}
+                    onChange={(date) => {
+                      const formattedDate = format(date, "yyyy-MM-dd");
+                      setFieldValue("dataEvento", formattedDate);
+                      setSelectedDate(date);
+                    }}
+                  />
+                  <button type="submit">Crea Evento</button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </div>
       </div>
       <div className="rightSide">
         Sezione recensioni

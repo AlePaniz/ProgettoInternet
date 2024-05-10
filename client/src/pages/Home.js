@@ -8,7 +8,13 @@ function Home() {
   //Creiamo uno state che contiene una lista per la api request
   const [locationList, setLocationList] = useState([]);
   let history = useNavigate();
-
+  const goToLocation = (idLocation) => {
+    if (localStorage.getItem("accessToken")) {
+      history(`/location/${idLocation}`);
+    } else {
+      history("/registration");
+    }
+  };
   useEffect(() => {
     //URL PER L'api Req, facciamo la richiesta degli eventi e aggiungendo then, quindi dopo eseguiamo una funzione
     //All'interno di response ci saranno i dati della richiesta precedente
@@ -19,13 +25,14 @@ function Home() {
 
   return (
     <div>
-      <h1>CIAO</h1>
       {locationList.map((value, key) => {
         //key=index dell'elemento dell'array mentre value= il valore dell'elemento
         return (
           <div
             className="locationListItem"
-            onClick={() => history(`/location/${value.id}`)}
+            onClick={() => {
+              goToLocation(value.id);
+            }}
             key={key}
           >
             <div className="nome">{value.nome}</div>

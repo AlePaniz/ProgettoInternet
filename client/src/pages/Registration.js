@@ -42,6 +42,10 @@ function Registration() {
         validationSchema={validationSchema}
       >
         <Form className="formContainer">
+          <label>
+            Per visualizzare le informazioni e gli eventi di una location
+            registrati o fai il login al tuo account:
+          </label>
           <label>Nome:</label>
           <ErrorMessage name="nome" component="span" />
           <Field
