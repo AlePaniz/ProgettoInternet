@@ -16,6 +16,13 @@ router.get("/byId/:id", async (req, res) => {
   res.json(location);
 });
 
+//Richiesta di tutte le location create
+router.get("/byIdUtente/:id", async (req, res) => {
+  const id = req.params.id;
+  const listaLocation = await Locations.findAll({ where: { UtentiId: id } });
+  res.json(listaLocation);
+});
+
 //Inserire dati nel db sfruttando sequelize
 router.post("/", validateToken, async (req, res) => {
   try {

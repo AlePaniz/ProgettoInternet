@@ -82,4 +82,14 @@ router.get("/validation", validateToken, (req, res) => {
   res.json(req.utente);
 });
 
+//Richiede le informazioni dell'utente loggato
+router.get("/getinfo/:idUtente", async (req, res) => {
+  const id = req.params.idUtente;
+  const infoUtente = await Utenti.findByPk(id, {
+    attributes: { exclude: ["password"] }, //Escludiamo la password perchè non ci interessa
+  });
+
+  res.json(infoUtente);
+});
+
 module.exports = router;

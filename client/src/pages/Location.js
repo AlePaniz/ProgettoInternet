@@ -15,6 +15,7 @@ function Location() {
   const [locationObject, setLocationObject] = useState({}); //{} Perchè p un oggetto
   const [voto, setVoto] = useState();
   const [recensioni, setRecensioni] = useState([]);
+  const [eventi, setEventi] = useState([]);
   const [nuovaRecensione, setNuovaRecensione] = useState("");
   const { authState } = useContext(AuthContext);
 
@@ -27,21 +28,29 @@ function Location() {
     dataEvento: format(new Date("2000-01-01"), "yyyy-MM-dd"),
   };
 
-  //Per secificare imput validi
+  //Per specificare imput validi
   const validationSchema = Yup.object().shape({
     nome: Yup.string().required(),
     descrizione: Yup.string().required(),
     dataEvento: Yup.date().required(),
   });
   //Una volta inviati i dati
-  const onSubmit = (values) => {
-    axios.post("http://localhost:3001/eventi", values).then((response) => {
-      alert("Evento Creato!");
-    });
+  const onSubmit = (data) => {
+    axios
+      .post(`http://localhost:3001/eventi/${id}`, data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        alert(
+          "Richiesta inviata con successo! Ritorna nella location desiderata e se sarà accettato lo troverai nella lista degli eventi!"
+        );
+        history("/");
+      });
   };
   const [selectedDate, setSelectedDate] = useState(null);
 
   //Fine gestione creazione eventi
+
   useEffect(() => {
     //richiesta per la location in base all'id
     axios.get(`http://localhost:3001/locations/byId/${id}`).then((response) => {
@@ -51,6 +60,11 @@ function Location() {
     //Richiesta per tutte le recensioni in base all'id della location
     axios.get(`http://localhost:3001/recensioni/${id}`).then((response) => {
       setRecensioni(response.data);
+    });
+
+    //Richiesta per tutti gli eventi
+    axios.get(`http://localhost:3001/eventi/byId/${id}`).then((response) => {
+      setEventi(response.data);
     });
   }, []);
 
@@ -140,10 +154,28 @@ function Location() {
             </button>
           )}
         </div>
-        <div className="creazioneEvento">
+        <div className="Evento">
+          <div className="listaEventi">
+            <label>Lista di tutti gli eventi:</label>
+            {eventi.map((evento, key) => {
+              return (
+                <div key={key} className="evento">
+                  {evento.nome}
+                  <br></br>descrizione:{evento.descrizione}
+                  <br></br>
+                  <label>data:{evento.dataEvento}</label>
+                  {/* {authState.username === recensione.username && ( //Mostra il bottone per eliminare il commento se è loggato los tesso che l'ha scrittonpm
+                  <button onClick={() => cancellaRecensione(recensione.id)}>
+                    X
+                  </button>
+                )} */}
+                </div>
+              );
+            })}
+          </div>
           <div className="header">
             {" "}
-            Crea il tuo evento per questa location:{" "}
+            Manda la richiesta per creare il tuo evento per questa location:{" "}
           </div>
           <div className="formCreazioneEvento">
             <Formik
@@ -181,7 +213,8 @@ function Location() {
                       setSelectedDate(date);
                     }}
                   />
-                  <button type="submit">Crea Evento</button>
+                  <br></br>
+                  <button type="submit">Manda Richiesta</button>
                 </Form>
               )}
             </Formik>

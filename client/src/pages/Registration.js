@@ -2,8 +2,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
+  let history = useNavigate();
+
   const initialValues = {
     cognome: "",
     nome: "",
@@ -30,6 +33,7 @@ function Registration() {
   const onSubmit = (values) => {
     axios.post("http://localhost:3001/auth", values).then((response) => {
       window.alert("Registrazione riuscita!!");
+      history("/login");
       console.log(values);
     });
   };

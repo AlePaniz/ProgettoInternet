@@ -8,44 +8,75 @@ span {
 #usernameHome {
   color: rgb(6, 103, 250);
 }
-/* Css per la creazione degli eventi*/
+/* Css per la gestione degli eventi*/
 
-.createEventPage {
-  max-width: 400px;
-  margin: 0 auto;
+/* Stile per il contenitore principale dell'evento */
+.Evento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
 }
 
-.createEventPage label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.createEventPage input,
-.createEventPage textarea {
+/* Stile per la lista degli eventi */
+.listaEventi {
   width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Stile per un singolo evento nella lista */
+.evento {
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+/* Stile per l'header */
+.header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Stile per il form di creazione evento */
+.formCreazioneEvento {
+  width: 100%;
+  max-width: 400px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  padding: 20px;
 }
 
-.createEventPage button {
-  background-color: #007bff;
+/* Stile per i label nel form */
+.formCreazioneEvento label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Stile per gli input nel form */
+.formCreazioneEvento input,
+.formCreazioneEvento textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Stile per il bottone nel form */
+.formCreazioneEvento button {
+  background-color: #0853a8;
   color: #fff;
-  border: 10px;
+  border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.createEventPage button:hover {
+/* Stile per il bottone nel form al passaggio del mouse */
+.formCreazioneEvento button:hover {
   background-color: #0056b3;
 }
 

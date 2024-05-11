@@ -6,7 +6,9 @@ import AddLocation from "./pages/AddLocation";
 import Location from "./pages/Location";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
+import ProfilePage from "./pages/ProfilePage";
 import PageNotFound from "./pages/PageNotFound";
+
 import axios from "axios";
 
 //Vogliamo la definizione di tutte le route
@@ -71,8 +73,13 @@ function App() {
                 {authState.tipoUtente === "gestore" && (
                   <Link to="/addlocation">Aggiungi Location</Link>
                 )}
-                <label id="usernameHome">{authState.username}</label>
+
                 <button onClick={logout}>Logout</button>
+                <label id="usernameHome">
+                  <Link to={`/profilepage/${authState.id}`}>
+                    {authState.username}
+                  </Link>
+                </label>
               </>
             )}
           </div>
@@ -83,6 +90,7 @@ function App() {
             <Route path="/location/:id" element={<Location />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/profilepage/:id" element={<ProfilePage />} />
             <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </Router>

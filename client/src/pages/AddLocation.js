@@ -2,8 +2,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 function AddLocation() {
+  let history = useNavigate();
+
   const initialValues = {
     nome: "",
     descrizione: "",
@@ -19,14 +22,13 @@ function AddLocation() {
   });
 
   const onSubmit = (data) => {
-    console.log(localStorage.getItem("accessToken"));
     axios
       .post("http://localhost:3001/locations", data, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
         window.alert("Location aggiunta!!");
-        console.log("Ha funzionatos");
+        history("/");
       });
   };
 

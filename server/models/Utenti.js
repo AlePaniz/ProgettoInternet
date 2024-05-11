@@ -47,11 +47,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade",
     });
 
-    Utenti.associate = (models) => {
-      Utenti.hasMany(models.Eventi, {
-        onDelete: "cascade",
-      });
-    };
+    Utenti.hasMany(models.Eventi, {
+      onDelete: "cascade",
+    });
   };
+
   return Utenti;
 };
