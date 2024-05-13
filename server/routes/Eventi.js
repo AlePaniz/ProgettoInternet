@@ -25,4 +25,13 @@ router.post("/:locationId", validateToken, async (req, res) => {
   }
 });
 
+//Per cancellare un evento
+router.delete("/:eventoId", validateToken, async (req, res) => {
+  const eventoId = req.params.eventoId;
+  await Eventi.destroy({
+    where: { id: eventoId },
+  });
+
+  res.json("Cancellata con successo");
+});
 module.exports = router;

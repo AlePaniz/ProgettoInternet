@@ -92,4 +92,19 @@ router.get("/getinfo/:idUtente", async (req, res) => {
   res.json(infoUtente);
 });
 
+router.put("/changepsw", validateToken, async (req, res) => {
+  const { vecchiaPsw, nuovaPsw } = req.body; //Bisogna passare i dati con le chiavi esattamente vecchiaPsw e nuovaPsw
+  const utente = await Utenti.findOne({ where: { id: req.utente.id } });
+
+  bcrypt.compare(vecchiaPsw, utente.password).then((eq) => {
+    if (!eq) {
+      res.json({ error: "Password sbagliata" });
+    } else {
+      bcrypt.hash(nuovaPsw, 10).then((hash) => {
+        Utenti.update({ password: hash }, { where: { id: req.utente.id } });
+        res.json("SUCCESS");
+      });
+    }
+  });
+});
 module.exports = router;

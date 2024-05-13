@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../helpers/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
   //Id dell'utente passato
   let { id } = useParams();
   const [username, setUsername] = useState("");
   const [locationList, setLocationList] = useState([]);
+  const { authState } = useContext(AuthContext);
+  let history = useNavigate();
 
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/getinfo/${id}`).then((response) => {
@@ -23,6 +27,9 @@ function ProfilePage() {
     <div className="paginaProfilo">
       <div className="informazioniUtente">
         <h1>Utente: {username}</h1>
+        {authState.username === username && (
+          <button onClick={() => history("/changepsw")}>CambiaPassword</button>
+        )}
       </div>
       <div className="listaLocation">
         {locationList.map((value, key) => {

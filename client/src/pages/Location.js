@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 function Location() {
   let { id } = useParams();
-  const [locationObject, setLocationObject] = useState({}); //{} Perchè p un oggetto
+  const [locationObject, setLocationObject] = useState({}); //{} Perchè è un oggetto
   const [voto, setVoto] = useState();
   const [recensioni, setRecensioni] = useState([]);
   const [eventi, setEventi] = useState([]);
@@ -36,16 +36,25 @@ function Location() {
   });
   //Una volta inviati i dati
   const onSubmit = (data) => {
-    axios
-      .post(`http://localhost:3001/eventi/${id}`, data, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        alert(
-          "Richiesta inviata con successo! Ritorna nella location desiderata e se sarà accettato lo troverai nella lista degli eventi!"
-        );
-        history("/");
-      });
+    //Controlla che la data per cui effettuiamo la richiesta di aggiunta evento sia libera per questa location
+    const dataUnica = !eventi.some((eve) => eve.dataEvento === data.dataEvento);
+    if (dataUnica) {
+      //Se la data selezionata è libera per questa location effettua la richiesta
+      axios
+        .post(`http://localhost:3001/eventi/${id}`, data, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        })
+        .then((response) => {
+          alert(
+            "Richiesta inviata con successo! Ritorna nella location desiderata e se sarà accettato lo troverai nella lista degli eventi!"
+          );
+          history("/");
+        });
+    } else {
+      window.alert(
+        "La data per cui stai richiedendo la creazione dell'evento non è dispinobile, prova un altra location o un altra data per questa location."
+      );
+    }
   };
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -82,6 +91,22 @@ function Location() {
         );
       });
   };
+
+  const cancellaEvento = (id) => {
+    axios
+      .delete(`http://localhost:3001/eventi/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then(() => {
+        setEventi(
+          eventi.filter((eventoCheck) => {
+            //faccio un check se voglio tenere l'evento nella lista oppure no, se è quello appena cancellato no
+            return eventoCheck.id !== id;
+          })
+        );
+      });
+  };
+
   const aggiungiRecensione = () => {
     axios
       .post(
@@ -109,6 +134,7 @@ function Location() {
           setRecensioni([...recensioni, recDaAggiungere]); //Stiamo prendendo l'array e aggiungiamo un elemento in fondo lasciando l'array prima di quello come era
           //Utile per aggiungere in tempo reale le recensioni una volta scritte
           setNuovaRecensione("");
+          window.location.reload(); //Un escamotage per refreshare la pagina ogni nuova recensione e rendere possibile cancellarla
         }
       });
   };
@@ -164,11 +190,9 @@ function Location() {
                   <br></br>descrizione:{evento.descrizione}
                   <br></br>
                   <label>data:{evento.dataEvento}</label>
-                  {/* {authState.username === recensione.username && ( //Mostra il bottone per eliminare il commento se è loggato los tesso che l'ha scrittonpm
-                  <button onClick={() => cancellaRecensione(recensione.id)}>
-                    X
-                  </button>
-                )} */}
+                  {authState.id === evento.UtentiId && ( //Mostra il bottone per eliminare l'evento se è loggato lo stesso che l'ha creato
+                    <button onClick={() => cancellaEvento(evento.id)}>X</button>
+                  )}
                 </div>
               );
             })}

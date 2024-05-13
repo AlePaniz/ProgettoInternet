@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import ProfilePage from "./pages/ProfilePage";
 import PageNotFound from "./pages/PageNotFound";
+import ChangePsw from "./pages/ChangePsw";
 
 import axios from "axios";
 
@@ -91,6 +92,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/profilepage/:id" element={<ProfilePage />} />
+            <Route path="/changepsw" element={<ChangePsw />} />
             <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </Router>
