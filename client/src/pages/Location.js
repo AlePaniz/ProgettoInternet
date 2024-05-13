@@ -52,7 +52,7 @@ function Location() {
         });
     } else {
       window.alert(
-        "La data per cui stai richiedendo la creazione dell'evento non è dispinobile, prova un altra location o un altra data per questa location."
+        "La data per cui stai richiedendo la creazione dell'evento non è disponibile, prova un altra location o un altra data per questa location."
       );
     }
   };

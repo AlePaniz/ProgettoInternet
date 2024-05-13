@@ -23,6 +23,11 @@ function ProfilePage() {
         setLocationList(response.data);
       });
   }, []);
+
+  const goToLocation = (idLocation) => {
+    history(`/locationchanger/${idLocation}`);
+  };
+
   return (
     <div className="paginaProfilo">
       <div className="informazioniUtente">
@@ -35,7 +40,13 @@ function ProfilePage() {
         {locationList.map((value, key) => {
           //key=index dell'elemento dell'array mentre value= il valore dell'elemento
           return (
-            <div className="locationListItem" key={key}>
+            <div
+              className="locationListItem"
+              onClick={() => {
+                goToLocation(value.id);
+              }}
+              key={key}
+            >
               <div className="nome">{value.nome}</div>
               <div className="indirizzo">Indirizzo:{value.indirizzo}</div>
               <div className="descrizione">Descrizione:{value.descrizione}</div>

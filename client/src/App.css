@@ -186,8 +186,6 @@ span {
   color: #666;
 }
 
-/* Stile pagina location singola*/
-
 /* Stili per la pagina di visualizzazione della località */
 .locationPage {
   display: flex;
@@ -347,4 +345,30 @@ span {
 
 .loginPage button:hover {
   background-color: #0056b3;
+}
+
+/* Stile per la pagina di gestione della singola location */
+
+.infoLocationDaCambiare {
+  width: 600px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.nome {
+  font-weight: bold;
+}
+
+.cambiaDescrizione,
+.cambiaIndirizzo,
+.cambiaNPosti,
+.cambiaNome {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  .border_radius {
+    border-radius: 10px 10px 10px 10px;
+  }
 }

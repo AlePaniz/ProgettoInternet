@@ -35,6 +35,21 @@ router.post("/", validateToken, async (req, res) => {
   }
 });
 
+//Richiesta per il cambiamento di un determinato capo di una location passando il campo che vogliamo cambiare
+router.put("/cambiamento/:campoDaCambiare", async (req, res) => {
+  try {
+    const campoDaCambiare = req.params.campoDaCambiare;
+    const { cambiamento, id } = req.body;
+    const updateFields = {};
+    // Creo un oggetto dinamico per specificare quale campo cambiare e il suo nuovo valore
+    updateFields[campoDaCambiare] = cambiamento;
+
+    await Locations.update(updateFields, { where: { id: id } });
+    res.json(cambiamento);
+  } catch (error) {}
+});
+
+//Per cancellare la location di cui passiamo l'id
 router.delete("/:locationId", validateToken, async (req, res) => {
   const locationId = req.params.locationId;
   await Locations.destroy({
