@@ -60,4 +60,6 @@ router.delete("/:locationId", validateToken, async (req, res) => {
   res.send("Elminazione effettuata");
 });
 
+//PARTE RIGUARDANTE LE IMMMAGINI:
+router.post("uploadImmagine", async (req, res) => {});
 module.exports = router;

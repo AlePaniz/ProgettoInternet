@@ -8,6 +8,7 @@ function LocationChanger() {
   let { id } = useParams();
   const [locationObject, setLocationObject] = useState({}); //{} Perchè è un oggetto
   const { authState } = useContext(AuthContext);
+  const [img, setImg] = useState();
 
   useEffect(() => {
     //richiesta per la location in base all'id
@@ -46,7 +47,13 @@ function LocationChanger() {
         });
     }
   };
-
+  const uploadImmagine = () => {
+    const formData = new FormData();
+    formData.append("file", img);
+    axios
+      .post("http://localhost:3001/locations/uploadImmagine", formData)
+      .then((response) => {});
+  };
   return (
     <div className="locationChangerPage">
       <div className="leftSide">
@@ -89,7 +96,14 @@ function LocationChanger() {
           </div>{" "}
         </div>
       </div>
-      <div className="rightSide">Aggiungi le fotografie della location:</div>
+      <div className="rightSide">
+        Aggiungi le fotografie della location:
+        <input
+          type="file"
+          onChange={(immagine) => setImg(immagine.targetfiles[0])}
+        />
+        <button onClick={uploadImmagine}>Aggiungi Immagine</button>
+      </div>
     </div>
   );
 }
