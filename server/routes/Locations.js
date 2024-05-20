@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { Locations } = require("../models");
+const { Locations, Fotografie } = require("../models");
 const { validateToken } = require("../middlewares/AuthMiddleware");
+const multer = require("multer");
 
 //Prende tutti le Locations tramite sequelize
 router.get("/", async (req, res) => {
@@ -46,7 +47,9 @@ router.put("/cambiamento/:campoDaCambiare", async (req, res) => {
 
     await Locations.update(updateFields, { where: { id: id } });
     res.json(cambiamento);
-  } catch (error) {}
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 //Per cancellare la location di cui passiamo l'id
@@ -61,5 +64,47 @@ router.delete("/:locationId", validateToken, async (req, res) => {
 });
 
 //PARTE RIGUARDANTE LE IMMMAGINI:
-router.post("uploadImmagine", async (req, res) => {});
+
+//Utilizzo multer per lo storage delle immagini:
+const storage = multer.diskStorage({
+  //destinazione delle immagini
+  destination: function (req, file, cb) {
+    return cb(null, "./public/images");
+  },
+  //Filename
+  filename: function (req, file, cb) {
+    return cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+
+const uploadImmagine = multer({ storage });
+//Caricare le immagini
+router.post(
+  "/uploadImmagine",
+  uploadImmagine.single("file"),
+  async (req, res) => {
+    try {
+      const { id } = req.body;
+      const { filename, destination } = req.file;
+      const foto = await Fotografie.create({
+        nome: filename,
+        percorso: destination,
+        LocationId: id,
+      });
+      res.json(id);
+    } catch (error) {
+      res.send(error);
+    }
+  }
+);
+
+//Tutte le immagini di una certa location
+router.get("/immaginiById/:locationId", async (req, res) => {
+  const locationId = req.params.locationId;
+  const recensione = await Fotografie.findAll({
+    where: { LocationId: locationId },
+  });
+  res.json(recensione);
+});
+
 module.exports = router;

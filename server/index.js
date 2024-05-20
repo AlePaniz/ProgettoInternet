@@ -7,6 +7,9 @@ app.use(cors());
 
 const db = require("./models");
 
+// Middleware per servire file statici dalla cartella 'public'
+app.use(express.static("public"));
+
 //Routers
 const routerEventi = require("./routes/Eventi");
 app.use("/eventi", routerEventi);

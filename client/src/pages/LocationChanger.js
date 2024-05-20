@@ -9,12 +9,19 @@ function LocationChanger() {
   const [locationObject, setLocationObject] = useState({}); //{} Perchè è un oggetto
   const { authState } = useContext(AuthContext);
   const [img, setImg] = useState();
+  const [galleria, setGalleria] = useState([]);
 
   useEffect(() => {
     //richiesta per la location in base all'id
     axios.get(`http://localhost:3001/locations/byId/${id}`).then((response) => {
       setLocationObject(response.data);
     });
+
+    axios
+      .get(`http://localhost:3001/locations/immaginiById/${id}`)
+      .then((response) => {
+        setGalleria(response.data);
+      });
   }, []);
 
   const editLocation = (opt) => {
@@ -50,9 +57,16 @@ function LocationChanger() {
   const uploadImmagine = () => {
     const formData = new FormData();
     formData.append("file", img);
+    formData.append("id", id);
     axios
       .post("http://localhost:3001/locations/uploadImmagine", formData)
-      .then((response) => {});
+      .then((response) => {
+        alert("Immagine aggiunta con successo");
+        setGalleria([...galleria, img]); //Stiamo prendendo l'array e aggiungiamo un elemento in fondo lasciando l'array prima di quello come era
+        //Utile per aggiungere in tempo reale le immagini una volta scritte
+        setImg(null);
+        window.location.reload();
+      });
   };
   return (
     <div className="locationChangerPage">
@@ -97,12 +111,25 @@ function LocationChanger() {
         </div>
       </div>
       <div className="rightSide">
-        Aggiungi le fotografie della location:
-        <input
-          type="file"
-          onChange={(immagine) => setImg(immagine.targetfiles[0])}
-        />
-        <button onClick={uploadImmagine}>Aggiungi Immagine</button>
+        <div className="formAggiungiFoto">
+          Aggiungi le fotografie della location:
+          <input
+            type="file"
+            onChange={(immagine) => setImg(immagine.target.files[0])}
+          />
+          <button onClick={uploadImmagine}>Aggiungi Immagine</button>
+        </div>
+        <div className="galleriaFoto">
+          Foto della tua location:
+          {galleria.map((immagine) => (
+            <div key={immagine.id} className="singolaFoto">
+              <img
+                src={`http://localhost:3001/images/${immagine.nome}`}
+                alt={immagine.nome}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

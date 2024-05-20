@@ -18,6 +18,7 @@ function Location() {
   const [eventi, setEventi] = useState([]);
   const [nuovaRecensione, setNuovaRecensione] = useState("");
   const { authState } = useContext(AuthContext);
+  const [galleria, setGalleria] = useState([]); //Immagini per la location
 
   let history = useNavigate();
   //Inizio gestione creazione eventi:
@@ -75,6 +76,13 @@ function Location() {
     axios.get(`http://localhost:3001/eventi/byId/${id}`).then((response) => {
       setEventi(response.data);
     });
+
+    //Richiesta immagini della location
+    axios
+      .get(`http://localhost:3001/locations/immaginiById/${id}`)
+      .then((response) => {
+        setGalleria(response.data);
+      });
   }, []);
 
   const cancellaRecensione = (id) => {
@@ -246,6 +254,17 @@ function Location() {
         </div>
       </div>
       <div className="rightSide">
+        <div className="galleriaFoto">
+          Immagini della location:
+          {galleria.map((immagine) => (
+            <div key={immagine.id} className="singolaFoto">
+              <img
+                src={`http://localhost:3001/images/${immagine.nome}`}
+                alt={immagine.nome}
+              />
+            </div>
+          ))}
+        </div>
         Sezione recensioni
         <div className="addTestoRecensione">
           <input
