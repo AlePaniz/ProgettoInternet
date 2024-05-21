@@ -3,6 +3,7 @@ const router = express.Router();
 const { Locations, Fotografie } = require("../models");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 const multer = require("multer");
+const fs = require("fs");
 
 //Prende tutti le Locations tramite sequelize
 router.get("/", async (req, res) => {
@@ -98,13 +99,33 @@ router.post(
   }
 );
 
-//Tutte le immagini di una certa location
+//Tutte le fotografie di una certa location
 router.get("/immaginiById/:locationId", async (req, res) => {
   const locationId = req.params.locationId;
-  const recensione = await Fotografie.findAll({
+  const foto = await Fotografie.findAll({
     where: { LocationId: locationId },
   });
-  res.json(recensione);
+  res.json(foto);
+});
+
+//Cancella le fotografie sia dal db che dal filesystem
+router.delete("/cancellaImg/:fotoId", async (req, res) => {
+  const fotoId = req.params.fotoId;
+  const foto = Fotografie.findByPk(fotoId);
+  const filePath = `${foto.percorso}`;
+  await Fotografie.destroy({
+    where: {
+      id: fotoId,
+    },
+  });
+
+  //Cancella file dal filesystem tramite fs
+  fs.unlink(filePath, async (err) => {
+    if (err) {
+      console.error("Errore nella cancellazione del file:, err");
+    }
+  });
+  res.send("Elminazione della fotografia effettuata");
 });
 
 module.exports = router;

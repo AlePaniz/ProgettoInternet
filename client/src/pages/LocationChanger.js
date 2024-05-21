@@ -68,6 +68,19 @@ function LocationChanger() {
         window.location.reload();
       });
   };
+
+  const cancellaImg = (id) => {
+    axios
+      .delete(`http://localhost:3001/locations/cancellaImg/${id}`)
+      .then(() => {
+        setGalleria(
+          galleria.filter((foto) => {
+            return foto.id !== id; //Ritorno nella galleria(lista di foto) solo le foto che non sono quella che cancello
+          })
+        );
+      });
+  };
+
   return (
     <div className="locationChangerPage">
       <div className="leftSide">
@@ -127,6 +140,7 @@ function LocationChanger() {
                 src={`http://localhost:3001/images/${immagine.nome}`}
                 alt={immagine.nome}
               />
+              <button onClick={() => cancellaImg(immagine.id)}>Elimina</button>
             </div>
           ))}
         </div>
