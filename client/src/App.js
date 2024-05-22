@@ -1,4 +1,4 @@
-import "./App.css";
+import "./Style.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateEvent from "./pages/CreateEvent";
@@ -61,6 +61,7 @@ function App() {
     //Passo auhtstate e setauth state "circondando" tutta la mia app con il tag auhtcontext così da renderlo accessibile dappertutto
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
+        
         <Router>
           <div className="navbar">
             <Link to="/">Home</Link>

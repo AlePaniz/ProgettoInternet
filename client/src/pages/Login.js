@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
+import { Helmet } from "react-helmet";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -29,26 +30,51 @@ function Login() {
     });
   };
   return (
-    <div className="loginPage">
-      <h1>Effettua il login al tuo account:</h1>
-      <input
-        type="text"
-        placeholder="Username..."
-        autoComplete="off"
-        onChange={(event) => {
-          setUsername(event.target.value);
-        }}
-      ></input>
-      <input
-        type="password"
-        placeholder="Password..."
-        autoComplete="off"
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-      ></input>
-      <button onClick={login}>Login</button>
-    </div>
+    <>
+      <Helmet>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+        <link rel="stylesheet" href="Style.css"></link>
+      </Helmet>
+      <body>
+        <div className="login-box">
+          <form action="">
+            <h1>Login</h1>
+
+            <div class="input-box">
+              <input
+              type="text"
+              placeholder="Username"
+              autoComplete="off"
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}></input>
+              <i class='bx bxs-user' ></i>
+              
+            </div>
+            <div class="input-box">
+              <input
+              type="password"
+              placeholder="Password"
+              autoComplete="off"
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}></input>
+              <i class='bx bxs-lock-alt' ></i>
+            </div>
+            
+            <button class="btn" onClick={login}>Login</button>
+
+            <div class="register-link">
+              <p>Non ha un account?  <a href="#">Registrati</a></p>
+            </div>
+
+          </form>
+        
+        </div>
+      </body>
+      
+    </>
+    
   );
 }
 
