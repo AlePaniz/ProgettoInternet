@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function Registration() {
   let history = useNavigate();
@@ -39,117 +40,134 @@ function Registration() {
   };
 
   return (
-    <div className="registrationPage">
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema}
-      >
-        <Form className="formContainer">
-          <label>
-            Per visualizzare le informazioni e gli eventi di una location
-            registrati o fai il login al tuo account:
-          </label>
-          <label>Nome:</label>
-          <ErrorMessage name="nome" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="nome"
-            placeholder="Nome utente..."
-          />
-          <label>Cognome:</label>
-          <ErrorMessage name="cognome" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="cognome"
-            placeholder="Cognome utente..."
-          />
-          <label>Codice Fiscale:</label>
-          <ErrorMessage name="codFiscale" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="codFiscale"
-            placeholder="Codice fiscale..."
-          />
-          <label>Indirizzo:</label>
-          <ErrorMessage name="indirizzo" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="indirizzo"
-            placeholder="Indirizzo..."
-          />
-          <label>Email:</label>
-          <ErrorMessage name="email" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="email"
-            placeholder="Email..."
-          />
-          <label>Telefono:</label>
-          <ErrorMessage name="telefono" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="telefono"
-            placeholder="Telefono..."
-          />
-          <label>Tipo utente che si vuole registrare:</label>
-          <Field
-            name="tipoUtente"
-            render={({ field }) => (
-              <>
-                <div className="radio-item">
-                  <label htmlFor="cliente">Cliente:</label>
-                  <input
-                    {...field}
-                    id="cliente"
-                    value="cliente"
-                    checked={field.value === "cliente"}
-                    name="tipoUtente"
-                    type="radio"
-                  />
-                </div>
+    <>
+      <Helmet>
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+          <link rel="stylesheet" href="Style.css"/>
+      </Helmet>
+      <div className="registration-box">
+        <h1>REGISTRATI</h1>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={validationSchema}
+        >
+          <Form className="formContainer">
+            <div class="input-box">      
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="nome"
+                placeholder="Nome Utente"
+              />
+              <ErrorMessage class="errore" name="nome" component="span" />   
+            </div>
+            <div class="input-box">
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="cognome"
+                placeholder="Cognome Utente"
+              />
+              <ErrorMessage class="errore" name="cognome" component="span" />
+            </div>
+            <div class="input-box">
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="codFiscale"
+                placeholder="Codice Fiscale"
+              />
+              <ErrorMessage class="errore" name="codFiscale" component="span" />
+            </div>
+            <div class="input-box">
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="indirizzo"
+                placeholder="Indirizzo"
+              />
+              <ErrorMessage class="errore" name="indirizzo" component="span" />
+            </div>
+            <div class="input-box">
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="email"
+                placeholder="Email"
+              />
+              <ErrorMessage class="errore" name="email" component="span" />
+            </div>
+            <div class="input-box">
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="telefono"
+                placeholder="Telefono"
+              />
+              <ErrorMessage class="errore" name="telefono" component="span" />
+            </div>
+            <div class="input-box">
+              <Field
+                autoComplete="off"
+                id="regUtente"
+                name="username"
+                placeholder="Username"
+              />
+              <ErrorMessage class="errore" name="username" component="span" />
+            </div>
+            <div class="input-box">
+              
+              <Field
+                autoComplete="off"
+                type="password"
+                id="regUtente"
+                name="password"
+                placeholder="Password"
+              />
+              <ErrorMessage class="errore" name="password" component="span" />
+            </div>
+            <div class="tipo-utente">
+              
+            </div>
+          
+            <label>Tipo utente che si vuole registrare</label>
+            <Field
+              name="tipoUtente"
+              render={({ field }) => (
+                <>
+                  <div className="radio-item">
+                    <input
+                      {...field}
+                      id="cliente"
+                      value="cliente"
+                      checked={field.value === "cliente"}
+                      name="tipoUtente"
+                      type="radio"
+                    />
+                    <label htmlFor="cliente">    Cliente:</label>
+                  </div>
 
-                <div className="radio-item">
-                  <label htmlFor="gestore">Gestore di Eventi:</label>
-                  <input
-                    {...field}
-                    id="gestore"
-                    value="gestore"
-                    name="tipoUtente"
-                    checked={field.value === "gestore"}
-                    type="radio"
-                  />
-                </div>
-              </>
-            )}
-          />
-          <label>Username:</label>
-          <ErrorMessage name="username" component="span" />
-          <Field
-            autoComplete="off"
-            id="regUtente"
-            name="username"
-            placeholder="Username..."
-          />
-          <label>Passowrd:</label>
-          <ErrorMessage name="password" component="span" />
-          <Field
-            autoComplete="off"
-            type="password"
-            id="regUtente"
-            name="password"
-            placeholder="Password..."
-          />
-          <button type="submit">Registrati</button>
-        </Form>
-      </Formik>
-    </div>
+                  <div className="radio-item">
+                    <input
+                        {...field}
+                        id="gestore"
+                        value="gestore"
+                        name="tipoUtente"
+                        checked={field.value === "gestore"}
+                        type="radio"
+                    />
+                    <label htmlFor="gestore"> Gestore di Eventi:</label>
+                  </div>
+                </>
+              )}
+            />
+            <button class="btn" type="submit">Registrati</button>
+          </Form>
+        </Formik>
+      </div>
+    </>
+    
   );
 }
 
