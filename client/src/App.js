@@ -17,6 +17,7 @@ import axios from "axios";
 import { AuthContext } from "./helpers/AuthContext"; //Metto il context nel livello più alto dell'app che sarebbe appunto App.js
 import { useState } from "react";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -59,48 +60,66 @@ function App() {
 
   return (
     //Passo auhtstate e setauth state "circondando" tutta la mia app con il tag auhtcontext così da renderlo accessibile dappertutto
-    <div className="App">
-      <AuthContext.Provider value={{ authState, setAuthState }}>
-        
-        <Router>
-          <div className="navbar">
-            <Link to="/">Home</Link>
+    <>
+      <Helmet>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+        <link rel="stylesheet" href="Style.css"/>
+      </Helmet>
 
-            {!authState.status ? ( //Se c'è qualcosa in sessione non mi mostrerà più i tasti login e registazione(forzando anche un refresh della pagina)
-              <>
-                <Link to="/login">Login</Link>
-                <Link to="/registration">Registrati</Link>
-              </>
-            ) : (
-              <>
-                {authState.tipoUtente === "gestore" && (
-                  <Link to="/addlocation">Aggiungi Location</Link>
-                )}
+      <div className="App">
+        <AuthContext.Provider value={{ authState, setAuthState }}>
+          
+          <Router>
+            
+              <header>
+                <img src="./Img/background.jpg" class="img-navbar"/>
+                <div className="navbar">
+                  <Link to="/">HOME</Link>
+                  <Link> SERVIZI</Link>
+                  <Link>CHI SIAMO</Link>
+                  <Link>CONTATTI</Link>
 
-                <button onClick={logout}>Logout</button>
-                <label id="usernameHome">
-                  <Link to={`/profilepage/${authState.id}`}>
-                    {authState.username}
-                  </Link>
-                </label>
-              </>
-            )}
-          </div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/createevent" element={<CreateEvent />} />
-            <Route path="/addlocation" element={<AddLocation />} />
-            <Route path="/location/:id" element={<Location />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/profilepage/:id" element={<ProfilePage />} />
-            <Route path="/changepsw" element={<ChangePsw />} />
-            <Route path="/locationchanger/:id" element={<LocationChanger />} />
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </Router>
-      </AuthContext.Provider>
-    </div>
+                  {!authState.status ? ( //Se c'è qualcosa in sessione non mi mostrerà più i tasti login e registazione(forzando anche un refresh della pagina)
+                    <>
+                      <Link to="/login">Login</Link>
+                      <Link to="/registration">Registrati</Link>
+                    </>
+                  ) : (
+                    <>
+                      {authState.tipoUtente === "gestore" && (
+                        <Link to="/addlocation">Aggiungi Location</Link>
+                      )}
+
+                      <button onClick={logout}>Logout</button>
+                      <label id="usernameHome">
+                        <Link to={`/profilepage/${authState.id}`}>
+                          {authState.username}
+                        </Link>
+                      </label>
+                    </>
+                  )}
+
+                  <button to="/login" class="btnLogin-popup">LOGIN</button>
+                </div>
+              </header>
+            
+            
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/createevent" element={<CreateEvent />} />
+                <Route path="/addlocation" element={<AddLocation />} />
+                <Route path="/location/:id" element={<Location />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/profilepage/:id" element={<ProfilePage />} />
+                <Route path="/changepsw" element={<ChangePsw />} />
+                <Route path="/locationchanger/:id" element={<LocationChanger />} />
+                <Route path="/*" element={<PageNotFound />} />
+              </Routes>
+          </Router>
+        </AuthContext.Provider>
+      </div>
+    </>
   );
 }
 
