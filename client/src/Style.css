@@ -26,8 +26,8 @@ body {
     align-items: center;
     min-height: 100vh;
     min-width: 100vh;
-    /*background: url('./Img/background.jpg') no-repeat;*/
-    background: white;
+    background: url('./Img/background.jpg') no-repeat;
+    /*background: white;*/
     background-size: cover;
     background-position: center;
 }

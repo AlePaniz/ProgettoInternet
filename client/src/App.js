@@ -72,7 +72,8 @@ function App() {
           <Router>
             
               <header>
-                <img src="./Img/background.jpg" class="img-navbar"/>
+                <img src="Img\logo_senza_nome_bianco.jpg" class="img-navbar"/>
+
                 <div className="navbar">
                   <Link to="/">HOME</Link>
                   <Link> SERVIZI</Link>
@@ -102,7 +103,6 @@ function App() {
                   <button to="/login" class="btnLogin-popup">LOGIN</button>
                 </div>
               </header>
-            
             
             <Routes>
                 <Route path="/" element={<Home />} />
