@@ -1,4 +1,220 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@font-face {
+    font-family: 'Glamor Med Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-MediumExtended.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-MediumExtended.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-CondensedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-CondensedItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Light Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-LightExtendedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-LightExtendedItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Regular.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Med Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-MediumExtendedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-MediumExtendedItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Med';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Medium.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-BoldCondensedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-BoldCondensedItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Extended.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Extended.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-BoldExtended.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-BoldExtended.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor';
+    src: url('font/transfonter.org-20240610-100836/Glamor-BoldItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Light Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-LightCondensed.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-LightCondensed.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Bold.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor';
+    src: url('font/transfonter.org-20240610-100836/Glamor-LightItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Condensed.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-BoldCondensed.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-BoldCondensed.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-ExtendedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-ExtendedItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Med Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-MediumCondensedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-MediumCondensedItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Light Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-LightCondensedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-LightCondensedItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Light Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-LightExtended.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-LightExtended.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Ext';
+    src: url('font/transfonter.org-20240610-100836/Glamor-BoldExtendedItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-BoldExtendedItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Med Cond';
+    src: url('font/transfonter.org-20240610-100836/Glamor-MediumCondensed.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-MediumCondensed.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Italic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor';
+    src: url('font/transfonter.org-20240610-100836/Glamor-Light.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glamor Med';
+    src: url('font/transfonter.org-20240610-100836/Glamor-MediumItalic.woff2') format('woff2'),
+        url('font/transfonter.org-20240610-100836/Glamor-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
 
 * {
     margin: 0;
@@ -13,7 +229,6 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background: red;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,8 +241,8 @@ body {
     align-items: center;
     min-height: 100vh;
     min-width: 100vh;
-    background: url('./Img/background.jpg') no-repeat;
-    /*background: white;*/
+    /*background: url('./Img/background.jpg') no-repeat;*/
+    background: #f3ece6;
     background-size: cover;
     background-position: center;
 }
@@ -134,7 +349,7 @@ body {
 .registration-box .input-box {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 38px;
     margin: 29px 0;
     margin-top: 6px;
 }
@@ -164,12 +379,12 @@ body {
     margin: 2%;
     margin-top: 50%;
     margin-bottom: 50px;
-    color: red;
 }
 
 .navbar a {
     position: relative;
     font-size: 1.1em;
+    font-family: 'Glamor Med', Glamor-MediumItalic;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
@@ -195,9 +410,10 @@ body {
 
 .navbar .btnLogin-popup {
     width: 130px;
-    height: 50px;
+    height: 40px;
     background: transparent;
     border: 2px solid #fff;
+    font-family: 'Glamor Med', Glamor-MediumItalic;
     outline: none;
     border-radius: 40px;
     cursor: pointer;
@@ -210,5 +426,51 @@ body {
 
 .navbar .btnLogin-popup:hover {
     background: #fff;
-    color: #162938;
+    color: black;
+}
+
+.logo-navbar {
+    font-family: 'Glamor', Glamor-Regular;
+    color: #fff;
+}
+
+.navbar .link_login:hover::after {
+    transform: scaleX(0);
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Posiziona l'immagine dietro il contenuto */
+}
+
+.img-copertina {
+    width: 1910px;
+    height: auto;
+    object-fit: cover;
+}
+
+.titolo {
+    font-family: 'Glamor', Glamor-Regular;
+    color: #fff;
+    align-items: center;
+    font-size: 125px;
+}
+
+.titolo2 {
+    font-family: 'Glamor', Glamor-Regular;
+    align-items: center;
+}
+
+.sottotitolo {
+    font-family: 'Glamor', Glamor-Regular;
+    align-items: center;
+}
+
+.descrizione {
+    font-family: 'Glamor', Glamor-Regular;
+    align-items: center;
 }
