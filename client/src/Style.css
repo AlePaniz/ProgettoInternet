@@ -440,11 +440,16 @@ body {
 
 .background-container {
     position: absolute;
+    max-height: 3000000000px;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
     z-index: -1; /* Posiziona l'immagine dietro il contenuto */
+    text-align: center; /* Allinea il testo al centro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .img-copertina {
@@ -458,13 +463,13 @@ body {
     color: #fff;
     align-items: center;
     font-size: 125px;
+    margin-top: -250px;
 }
 
 
 .center-content {
     max-width: 800px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center; /* Allinea il testo al centro */
     display: flex;
     flex-direction: column;
@@ -472,8 +477,20 @@ body {
     align-items: center;
 }
 
-.testo {
+.testo1 {
     font-family: 'Glamor', Glamor-Regular;
     align-items: center;
+    font-size: 60px;
 }
 
+.testo2 {
+    font-family: 'Glamor', Glamor-Regular;
+    align-items: center;
+    font-size: 40px;
+}
+
+.testo3 {
+    font-family: 'Glamor', Glamor-Regular;
+    align-items: center;
+    font-size: 25px;
+}
