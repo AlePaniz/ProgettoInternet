@@ -93,13 +93,12 @@ function App() {
                       {authState.tipoUtente === "gestore" && (
                         <Link to="/addlocation">Aggiungi Location</Link>
                       )}
-
-                      <button onClick={logout}>Logout</button>
                       <label id="usernameHome">
                         <Link to={`/profilepage/${authState.id}`}>
                           {authState.username}
                         </Link>
                       </label>
+                      <button className="btnLogin-popup" onClick={logout}>LOGOUT</button>
                     </>
                   )}
                 </div>

@@ -32,6 +32,20 @@ function Home() {
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
         <link rel="stylesheet" href="Style.css"/>
       </Helmet>
+
+      
+      <div className="container">
+        <div className="background-container">
+          <h1 className="titolo">Dream Events</h1>
+          <img src={sfondo} className="img-copertina" /> 
+        </div>
+        <div className="center-content">
+          <br/><br/><h1 className="testo1">Agenzia Dream Events</h1><br/>
+          <h2 className="testo2">Creiamo Momenti Indimenticabili per Ogni Occasione Speciale</h2><br/>
+          <h3 className="testo3">Benvenuti a Eventi da Sogno, la tua agenzia di eventi di fiducia. Specializzati nell'organizzazione di matrimoni, comunioni, cresime, compleanni e molto altro, siamo qui per trasformare ogni occasione in un ricordo prezioso. Con un team di esperti appassionati e creativi, ci occupiamo di ogni dettaglio, dalla pianificazione alla realizzazione, garantendo che ogni evento sia unico e perfetto. Collaboriamo con i migliori fornitori e location per offrire soluzioni su misura che soddisfano le vostre esigenze e superano le vostre aspettative. Affidati a noi per vivere momenti da sogno che rimarranno nel cuore per sempre.</h3>
+        </div>
+      </div>
+        
       <div>
         {locationList.map((value, key) => {
           //key=index dell'elemento dell'array mentre value= il valore dell'elemento
@@ -50,20 +64,7 @@ function Home() {
             
           );
         })}
-      </div>
-
-      <h1 className="titolo">Dream Events</h1>
-      <div>
-        <div className="background-container">
-          <img src={sfondo} className="img-copertina" /> 
-        </div>
-        <div className="center-content">
-            <h1 className="testo1">Agenzia Dream Events</h1><br/>
-            <h2 className="testo2">Creiamo Momenti Indimenticabili per Ogni Occasione Speciale</h2><br/>
-            <h3 className="testo3">Benvenuti a Eventi da Sogno, la tua agenzia di eventi di fiducia. Specializzati nell'organizzazione di matrimoni, comunioni, cresime, compleanni e molto altro, siamo qui per trasformare ogni occasione in un ricordo prezioso. Con un team di esperti appassionati e creativi, ci occupiamo di ogni dettaglio, dalla pianificazione alla realizzazione, garantendo che ogni evento sia unico e perfetto. Collaboriamo con i migliori fornitori e location per offrire soluzioni su misura che soddisfano le vostre esigenze e superano le vostre aspettative. Affidati a noi per vivere momenti da sogno che rimarranno nel cuore per sempre.</h3>
-        </div>
-      </div>
-      
+      </div>      
     </>
   );
 }

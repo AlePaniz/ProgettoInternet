@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import { Helmet } from "react-helmet";
 
+import sfondo from "../Img/copertina.jpg";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -36,6 +37,9 @@ function Login() {
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
         <link rel="stylesheet" href="Style.css"/>
       </Helmet>
+        <div className="background-container-log-reg">
+          <img src={sfondo} className="img-copertina" /> 
+        </div>
         <div className="login-box">
           <form action="">
             <h1>LOGIN</h1>

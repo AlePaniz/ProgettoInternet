@@ -31,9 +31,9 @@ function ProfilePage() {
   return (
     <div className="paginaProfilo">
       <div className="informazioniUtente">
-        <h1>Utente: {username}</h1>
+        <h2 className="testo2">Utente: {username}</h2>
         {authState.username === username && (
-          <button onClick={() => history("/changepsw")}>CambiaPassword</button>
+          <button className="btnLogin-popup" onClick={() => history("/changepsw")}>CambiaPassword</button>
         )}
       </div>
       <div className="listaLocation">

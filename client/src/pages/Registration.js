@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
+import sfondo from "../Img/copertina.jpg";
+
 function Registration() {
   let history = useNavigate();
 
@@ -45,6 +47,9 @@ function Registration() {
           <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
           <link rel="stylesheet" href="Style.css"/>
       </Helmet>
+      <div className="background-container-log-reg">
+          <img src={sfondo} className="img-copertina" /> 
+        </div>
       <div className="registration-box">
         <h1>REGISTRATI</h1>
         <Formik
