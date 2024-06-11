@@ -20,7 +20,6 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 import React from "react";
-import sfondo from "./Img/copertina.jpg";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -105,19 +104,6 @@ function App() {
                   )}
                 </div>
               </header>
-
-              <h1 className="titolo">Dream Events</h1>
-              <div className="background-container">
-                <img src={sfondo} className="img-copertina" />
-                
-                <h1 className="titolo2">Agenzia Dream Events</h1>
-                <h2 className="sottotitolo">Creiamo Momenti Indimenticabili per Ogni Occasione Speciale</h2>
-                <h3 className="descrizione">Benvenuti a Eventi da Sogno, la tua agenzia di eventi di fiducia. Specializzati nell'organizzazione di matrimoni, comunioni, cresime, compleanni e molto altro, siamo qui per trasformare ogni occasione in un ricordo prezioso. Con un team di esperti appassionati e creativi, ci occupiamo di ogni dettaglio, dalla pianificazione alla realizzazione, garantendo che ogni evento sia unico e perfetto. Collaboriamo con i migliori fornitori e location per offrire soluzioni su misura che soddisfano le vostre esigenze e superano le vostre aspettative. Affidati a noi per vivere momenti da sogno che rimarranno nel cuore per sempre.</h3>
-                
-              </div>
-              
-              
-            
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/createevent" element={<CreateEvent />} />

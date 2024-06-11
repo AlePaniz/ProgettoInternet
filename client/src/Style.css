@@ -460,17 +460,20 @@ body {
     font-size: 125px;
 }
 
-.titolo2 {
+
+.center-content {
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Allinea il testo al centro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testo {
     font-family: 'Glamor', Glamor-Regular;
     align-items: center;
 }
 
-.sottotitolo {
-    font-family: 'Glamor', Glamor-Regular;
-    align-items: center;
-}
-
-.descrizione {
-    font-family: 'Glamor', Glamor-Regular;
-    align-items: center;
-}

@@ -3,6 +3,9 @@ import axios from "axios";
 //useEffec ci permette di eseguire una funzione ogni volta che la pagina è rendereizzata
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
+import sfondo from "../Img/copertina.jpg";
 
 function Home() {
   //Creiamo uno state che contiene una lista per la api request
@@ -24,23 +27,42 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      {locationList.map((value, key) => {
-        //key=index dell'elemento dell'array mentre value= il valore dell'elemento
-        return (
-          <div
-            className="locationListItem"
-            onClick={() => {
-              goToLocation(value.id);
-            }}
-            key={key}
-          >
-            <div className="nome">{value.nome}</div>
-            <div className="indirizzo">Indirizzo:{value.indirizzo}</div>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Helmet>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+        <link rel="stylesheet" href="Style.css"/>
+      </Helmet>
+      <div>
+        {locationList.map((value, key) => {
+          //key=index dell'elemento dell'array mentre value= il valore dell'elemento
+          return (
+            <div
+              className="locationListItem"
+              onClick={() => {
+                goToLocation(value.id);
+              }}
+              key={key}
+            >
+              <div className="nome">{value.nome}</div>
+              <div className="indirizzo">Indirizzo:{value.indirizzo}</div>
+            </div>
+
+            
+          );
+        })}
+      </div>
+
+      <h1 className="titolo">Dream Events</h1>
+      <div className="background-container">
+        <img src={sfondo} className="img-copertina" />
+
+        <div className="center-content">
+          <h1 className="testo">Agenzia Dream Events</h1>
+          <h2 className="testo">Creiamo Momenti Indimenticabili per Ogni Occasione Speciale</h2>
+          <h3 className="testo">Benvenuti a Eventi da Sogno, la tua agenzia di eventi di fiducia. Specializzati nell'organizzazione di matrimoni, comunioni, cresime, compleanni e molto altro, siamo qui per trasformare ogni occasione in un ricordo prezioso. Con un team di esperti appassionati e creativi, ci occupiamo di ogni dettaglio, dalla pianificazione alla realizzazione, garantendo che ogni evento sia unico e perfetto. Collaboriamo con i migliori fornitori e location per offrire soluzioni su misura che soddisfano le vostre esigenze e superano le vostre aspettative. Affidati a noi per vivere momenti da sogno che rimarranno nel cuore per sempre.</h3>
+      </div>
+      </div>
+    </>
   );
 }
 
