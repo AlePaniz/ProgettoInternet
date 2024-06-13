@@ -44,9 +44,7 @@ function Home() {
           <h2 className="testo2">Creiamo Momenti Indimenticabili per Ogni Occasione Speciale</h2><br/>
           <h3 className="testo3">Benvenuti a Eventi da Sogno, la tua agenzia di eventi di fiducia. Specializzati nell'organizzazione di matrimoni, comunioni, cresime, compleanni e molto altro, siamo qui per trasformare ogni occasione in un ricordo prezioso. Con un team di esperti appassionati e creativi, ci occupiamo di ogni dettaglio, dalla pianificazione alla realizzazione, garantendo che ogni evento sia unico e perfetto. Collaboriamo con i migliori fornitori e location per offrire soluzioni su misura che soddisfano le vostre esigenze e superano le vostre aspettative. Affidati a noi per vivere momenti da sogno che rimarranno nel cuore per sempre.</h3>
         </div>
-      </div>
-        
-      <div>
+        <div>
         {locationList.map((value, key) => {
           //key=index dell'elemento dell'array mentre value= il valore dell'elemento
           return (
@@ -57,14 +55,15 @@ function Home() {
               }}
               key={key}
             >
-              <div className="nome">{value.nome}</div>
-              <div className="indirizzo">Indirizzo:{value.indirizzo}</div>
+              <div className="nome">Nome: {value.nome}</div>
+              <div className="indirizzo">Indirizzo: {value.indirizzo}</div>
             </div>
 
             
           );
         })}
-      </div>      
+      </div> 
+      </div>     
     </>
   );
 }

@@ -74,7 +74,9 @@ function App() {
           <Router>
             
               <header>
-                <h1 className="logo-navbar">DreamEvents</h1>
+                <Link className="link_home" to="/">
+                  <h1 className="logo-navbar">DreamEvents</h1>
+                </Link>
 
                 <div className="navbar">
                   <Link to="/">Home</Link>

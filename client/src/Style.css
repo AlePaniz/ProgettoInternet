@@ -233,6 +233,7 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    background: #c2a083;
 }
 
 body {
@@ -510,4 +511,8 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Due colonne con uguale larghezza */
     gap: 10px; /* Spaziatura tra gli elementi */
+}
+
+.link_home {
+    text-decoration: none;
 }
