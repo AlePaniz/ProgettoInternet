@@ -45,24 +45,27 @@ function Home() {
           <h3 className="testo3">Benvenuti a Eventi da Sogno, la tua agenzia di eventi di fiducia. Specializzati nell'organizzazione di matrimoni, comunioni, cresime, compleanni e molto altro, siamo qui per trasformare ogni occasione in un ricordo prezioso. Con un team di esperti appassionati e creativi, ci occupiamo di ogni dettaglio, dalla pianificazione alla realizzazione, garantendo che ogni evento sia unico e perfetto. Collaboriamo con i migliori fornitori e location per offrire soluzioni su misura che soddisfano le vostre esigenze e superano le vostre aspettative. Affidati a noi per vivere momenti da sogno che rimarranno nel cuore per sempre.</h3>
         </div>
         <div>
-        {locationList.map((value, key) => {
-          //key=index dell'elemento dell'array mentre value= il valore dell'elemento
-          return (
-            <div
-              className="locationListItem"
-              onClick={() => {
-                goToLocation(value.id);
-              }}
-              key={key}
-            >
-              <div className="nome">Nome: {value.nome}</div>
-              <div className="indirizzo">Indirizzo: {value.indirizzo}</div>
-            </div>
+          <h1 className="testo1">Le Nostre Location</h1>
+          {locationList.map((value, key) => {
+            //key=index dell'elemento dell'array mentre value= il valore dell'elemento
+            return (
+              <div
+                className="location_container_item"
+                onClick={() => {
+                  goToLocation(value.id);
+                }}
+                key={key}
+              >
+                <div className="item_location">
+                  <div className="testo_item">{value.nome}</div>
+                  <div className="testo_item">{value.indirizzo}</div>
+                </div>
+              </div>
 
-            
-          );
-        })}
-      </div> 
+              
+            );
+          })}
+        </div> 
       </div>     
     </>
   );
