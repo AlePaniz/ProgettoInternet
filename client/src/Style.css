@@ -16,7 +16,7 @@
 }
 
 header {
-    /*position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -25,11 +25,11 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    background: #c2a083;*/
+    background: #c2a083;
 
-    width: 100vw;
-    height: 100vh;
-    background-image: url('./Img/copertina.jpg');
+    /*width: 100vw;
+    height: 100vh;*/
+    background-image: trasparent;
     background-position: bottom;
     background-size: cover;
 }
@@ -290,6 +290,7 @@ body {
 .testo1 {
     font-family: 'Medio', Medio;
     align-items: center;
+    text-align: center;
     font-size: 60px;
 }
 
@@ -333,3 +334,4 @@ body {
     align-items: center;
     font-size: 20px;
 }
+
